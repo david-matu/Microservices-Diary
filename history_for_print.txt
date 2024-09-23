@@ -1,0 +1,1000 @@
+    2  export JRE_HOME=/usr/lib/jvm/jdk-17.0.11
+    3  export PATH=$PATH:$JRE_HOME/bin
+    4  export JAVA_HOME=/usr/lib/jvm/jdk-17.0.11
+    5  export JAVA_PATH=$JAVA_HOME
+    6  export PATH=$PATH:$JAVA_HOME/bin
+    7  java -version
+    8  cd /home/dave/Documents/Code
+    9  git clone https://github.com/david-matu/calculator.git
+   10  cd calculator/
+   11  ls
+   12  git add .
+   13  git commit -m "first commit"
+   14  git push origin main
+   15  git config -list
+   16  git config --list
+   17  gedit .gitconfig
+   18  git -v
+   19  git config --global --unset-all credential.helper
+   20  git config --list
+   21  cd /home/dave/Downloads/calculator
+   22  ./gradlew compileJava
+   23  git add .
+   24  git commit -m "init commit skeleton"
+   25  git remote add origin https://github.com/david-matu/calculator.git
+   26  git config --global user.name "Dave"
+   27  git push origin main
+   28  git config --global credential.https://github.com.username david-matu
+   29  git push origin main
+   30  git config credential.helper cache
+   31  git remote set-url origin https://github.com/david-matu/calculator.git
+   32  git push origin main
+   33  git config --global --unset credential.helper
+   34  git push origin main
+   35  yum install git
+   36  sudo su
+   37  cd /usr/jvm
+   38  ls /usr/var
+   39  ls /usr/lib
+   40  ls /usr/lib/jvm
+   41  printenv | grep JAVA_HOME
+   42  export JAVA_HOME=~/jvm/jdk-17.0.11
+   43  printenv | grep JAVA_HOME
+   44  export PATH="$JAVA_HOME/bin:$PATH"
+   45  java -version
+   46  sudo yum install java-17-openjdk-devel
+   47  sudo update-alternatives --config 'java'
+   48  sudo yum install java-17-openjdk
+   49  sudo update-alternatives --config 'java'
+   50  ls -al ~/.ssh
+   51  cd ..
+   52  ll
+   53  ls
+   54  java -version
+   55  git push origin main
+   56  ssh -T git@github.com
+   57  ls -al ~/.ssh
+   58  ssh -T git@github.com
+   59  ssh -vT git@github.com
+   60  ssh-add -l -E sha256
+   61  sudo su
+   62  exit
+   63  ssh -T git@github.com
+   64  cd /
+   65  cd /home/
+   66  ls
+   67  cd dave
+   68  ls
+   69  mkdir Dav
+   70  ls
+   71  cd Dav
+   72  ssh-keygen -t ed25519 -C "davidmatu817@gmail.com"
+   73  ls /home/dave/.ssh
+   74  vi /home/dave/.ssh/id_ed25519
+   75  ls
+   76  ls /home/dave
+   77  ls
+   78  eval "$(ssh-agent -s)"
+   79  ssh-add dav_ssh_key
+   80  cat dav_ssh_key.pub 
+   81  vi dav_ssh_key.pub 
+   82  ssh-add ~/.ssh/id_ed25519
+   83  ssh T git@github.com
+   84  ssh -T git@github.com
+   85  ls
+   86  ssh-add dav_ssh_key
+   87  pwd
+   88  exit
+   89  cd /home/dave/Documents/Code/calculator
+   90  git add .
+   91  git commit -m "first commit"
+   92  git branch --unset-upstream
+   93  git commit -m "first commit"
+   94  git push origin main
+   95  git config --system --unset credential.helper
+   96  sudo git config --system --unset credential.helper
+   97  git push origin main
+   98  git remote set-url origin git@github.com/david-matu/calculator.git
+   99  git push origin main
+  100  ssh -vT git@github.com
+  101  ssh-add ~/.ssh/id_rsa_github
+  102  ssh-add ~/dave_ssh_key
+  103  ssh -T git@github.com
+  104  ssh-add /home/dave/Dav/dav_ssh_key
+  105  ssh -T git@github.com
+  106  git push origin main
+  107  git remote add origin git@github.com:david-matu/calculator.git
+  108  git remote remove origin
+  109  git remote add origin git@github.com:david-matu/calculator.git
+  110  git push origin main
+  111  exit
+  112  cd /home/dave/
+  113  ls
+  114  cd Dav
+  115  ls
+  116  pwd
+  117  cd /home/dave/Documents/Code/calculator
+  118  ./gradlew test
+  119  clear
+  120  ./gradlew test
+  121  ./gradlew clean test --info
+  122  ./gradlew clean test --scan
+  123  ./gradlew clean test
+  124  ./gradlew test
+  125  ./gradlew --refresh-dependencies
+  126  ./gradlew clean build
+  127  ./gradlew test
+  128  ./gradlew bootRun
+  129  git add .
+  130  ls
+  131  git add .
+  132  git commit -m "Add sum logic, controller and unit test"
+  133  git push
+  134  git push origin main
+  135  eval "$(ssh-agent -s)"
+  136  git push origin main
+  137  ssh-add /home/dave/Dav/dav_ssh_key
+  138  git push origin main
+  139  git add .
+  140  git push origin main
+  141  git commit -m "Add sum logic, controller and unit test"
+  142  git push origin main
+  143  git add .
+  144  git commit -m "Add sum logic, controller and unit test"
+  145  git push origin main
+  146  sudo systemctl start docker
+  147  docker ps
+  148  docker start competent_albattani 
+  149  docker ps
+  150  sudo su
+  151  vi /etc/docker/daemon.json
+  152  sudo su
+  153  cd Dav
+  154  ls
+  155  vi dav_ssh_key
+  156  cd /
+  157  ls
+  158  cd home/
+  159  ls
+  160  cd dave
+  161  ls
+  162  cd dave_docker_volumes/
+  163  ls
+  164  cd jenkins_home/
+  165  ls
+  166  cd tools/
+  167  ls
+  168  cd hudson.plugins.gradle.GradleInstallation/
+  169  ls
+  170  ls Gradle-instal/
+  171  sudo su
+  172  docker -H 0.0.0.0:2375 run hello-world
+  173  docker -H 0.0.0.0:4243 run hello-world
+  174  docker -H 127.0.0.1:4243 run hello-world
+  175  docker network ls
+  176  docker inspect
+  177  docker inspect 3cc99568a837
+  178  docker inspect 6e28febf95bb
+  179  docker inspect 157fe9c65932
+  180  vi /lib/systemd/system/docker.service
+  181  sudo su
+  182  docker -H 127.0.0.1:2375 run hello-world
+  183  docker ps
+  184  docker -H 172.0.0.1:2375 run hello-world
+  185  docker -H 172.17.0.1:2375 run hello-world
+  186  docker network ls
+  187  docker ps -a
+  188  docker image ls
+  189  docker run -it ubuntu_with_git_and_jdk
+  190  docker image ls
+  191  docker run -i -t ubuntu:20.04 /bin/bash
+  192  1
+  193  docker run -i -t ubuntu:20.04 /bin/bash
+  194  docker -H 0.0.0.0:4243 run hello-world
+  195  ls
+  196  cd Dav
+  197  ls
+  198  pwd
+  199  sudosu
+  200  sudo su
+  201  netstat
+  202  netstart start
+  203  netstat start
+  204  netstat -N
+  205  nmtui
+  206  nmcli dev
+  207  ifconfig wlan0 up
+  208  ip a
+  209  nmcli d
+  210  lspci | grep Network
+  211  lscpi -v
+  212  echo $JAVA_HOME
+  213  echo JAVA_HOME
+  214  echo $JAVA_HOME
+  215  cd /
+  216  cd /home/dave/
+  217  vi .bashrc
+  218  source ~/.bashrc
+  219  java --version
+  220  echo $JAVA_HOME
+  221  spring --version
+  222  which java
+  223  cd /usr/bin/java
+  224  ls -l | grep java
+  225  cd /usr/lib/jvm
+  226  ls
+  227  cd java-17-openjdk-17.0.11.0.9-2.el9.x86_64
+  228  ls
+  229  cd ..
+  230  ls java-17-openjdk-17.0.11.0.9-2.el9.x86_64/
+  231  ls java-17-openjdk-17.0.11.0.9-2.el9.x86_64/bin/
+  232  ls java-17-openjdk-17.0.11.0.9-2.el9.x86_64/bin/java 
+  233  ls java-17-openjdk-17.0.11.0.9-2.el9.x86_64/bin/java/home 
+  234  ls java-17-openjdk-17.0.11.0.9-2.el9.x86_64/bin/java/java-17-openjdk-17.0.11.0.9-2.el9.x86_64/bin/java
+  235  ls java-17-openjdk-17.0.11.0.9-2.el9.x86_64/bin/java/java-17-openjdk-17.0.11.0.9-2.el9.x86_64
+  236  ls
+  237  echo $JAVA_HOME
+  238  ll
+  239  chmod +777 jdk-17.0.11/
+  240  sudo chmod +777 jdk-17.0.11/
+  241  ll
+  242  cd jdk-17.0.11
+  243  ls
+  244  pwd
+  245  sudo su
+  246  spring --version
+  247  java --version
+  248  echo JAVA_HOME
+  249  echo $JAVA_HOME
+  250  cd /jvm/jdk-17.0.11
+  251  grep  ~/jvm/jdk-17.0.11
+  252  ls | grep  ~/jvm/jdk-17.0.11
+  253  cd /usr/share/jvm
+  254  ls
+  255  ll
+  256  cd ..
+  257  ls
+  258  cd /
+  259  export JAVA_HOME=~/jvm/jdk-17.0.11
+  260  echo $JAVA_HOME
+  261  export PATH="$JAVA_HOME/bin:$PATH"
+  262  sudo su
+  263  source "/home/dave/.sdkman/bin/sdkman-init.sh"
+  264  sdk help
+  265  sdk install springboot
+  266  spring --version
+  267  sudo su
+  268  echo $JAVA_HOME
+  269  cd /home/dave/Documents/Workspace-Microservices
+  270  sudo snap install notepad++
+  271  sudo snap install notepad-plus-plus
+  272  sudo snap install jupyterlab-desktop --classic
+  273  ls
+  274  spring init --boot-version=3.3.0 --type=gradle-project --java-version=17 --packaging=jar --name=product-service --package-name=com.david.microservices.alpha.product --groupId=com.david.microservices.alpha.product --dependencies=actuator,webflux --version=1.0.0-SNAPSHOT api	
+  275  spring init --boot-version=3.3.0 --type=gradle-project --java-version=17 --packaging=jar --name=util-service --package-name=com.david.microservices.alpha.util --groupId=com.david.microservices.alpha.util --dependencies=actuator,webflux --version=1.0.0-SNAPSHOT util
+  276  sudo snap install retro-games
+  277  sudo snap install bomber
+  278  sudo snap install killbots
+  279  exit
+  280  ls
+  281  gradle init
+  282  cd ..
+  283  mkdir Workspace-Microservices-util
+  284  cd Workspace-Microservices-util/
+  285  ls
+  286  gradle init
+  287  ls
+  288  cd /home/dave/Documents/Workspace-Microservices
+  289  cd ..
+  290  cd /home/dave/Documents/Workspace-Microservices
+  291  gradle init
+  292  sudo yum install gradle
+  293  sdk install gradle
+  294  gradle --version
+  295  cd /home/dave/Documents/Workspace-Microservices-alpha
+  296  cd /home/dave/Documents/Workspace-Microservices-alpha/api
+  297  ls
+  298  ./gradlew build
+  299  ./gradlew --help
+  300  cls
+  301  clear
+  302  gradle -q dependencyInsight --dependency asm
+  303  pwd
+  304  gradle -q dependencyInsight --dependency asm --stacktrace
+  305  ls
+  306  cd ../util
+  307  ls
+  308  cd ..
+  309  ls
+  310  ll
+  311  ./gradlew build
+  312  cd ..
+  313  ls
+  314  mkdir Gradle-works-to-delete
+  315  cd Gradle-works-to-delete/
+  316  ls
+  317  gradle init
+  318  ls
+  319  gradle init
+  320  ls
+  321  mkdir api
+  322  cd api/
+  323  gradle init
+  324  ls
+  325  cd ..
+  326  ls
+  327  mkdir util
+  328  ls
+  329  cd util
+  330  gradle init
+  331  ls
+  332  gradle init
+  333  ls
+  334  ./gradlew build
+  335  ./gradlew build --stacktrace
+  336  clear
+  337  ./gradlew build --stacktrace
+  338  clear
+  339  ./gradlew build --stacktrace
+  340  clear
+  341  ls
+  342  cd ..
+  343  ./gradlew build --stacktrace
+  344  ./gradlew build --scan
+  345  ls
+  346  vi settings.gradle 
+  347  ll
+  348  ls
+  349  clear
+  350  ./gradlew build --scan
+  351  ./gradle dependencies
+  352  ls
+  353  gradle dependencies
+  354  gradle compile
+  355  gradle tasks
+  356  cd util
+  357  cd mutil
+  358  ls
+  359  gradle dependencies
+  360  cd /home/dave/Documents/Gradle-works-to-delete
+  361  mkdir mutil
+  362  cd mutil/
+  363  gradle init --type java-library
+  364  :wrapper
+  365  :init
+  366  ls
+  367  mkdir settings.gradle
+  368  vim setting.gradle
+  369  exit
+  370  cd /home/dave/Documents/Workspace-Microservices-alpha
+  371  ls
+  372  gradle build --stacktrace
+  373  clear
+  374  gradle build --stacktrace
+  375  clear
+  376  gradle build --stacktrace
+  377  clear
+  378  gradle build --stacktrace
+  379  cd util
+  380  ls
+  381  gradle build --stacktrace
+  382  clear
+  383  gradle build --stacktrace
+  384  clear
+  385  gradle build --stacktrace
+  386  clear
+  387  gradle build --stacktrace
+  388  clear
+  389  gradle build --stacktrace
+  390  clear
+  391  gradle build --stacktrace
+  392  clear
+  393  gradle build --stacktrace
+  394  gradle build --stacktrace --info
+  395  clear
+  396  gradle build --stacktrace --info
+  397  clear
+  398  gradle build --stacktrace --info
+  399  ls
+  400  clear
+  401  cd ..
+  402  ./gradlew -q projects
+  403  ./gradlew :api:tasks
+  404  ./gradlew :util:tasks
+  405  ./gradlew :util:tasks dependencyInsight
+  406  ./gradlew :util:tasks dependencyInsight --stacktrace
+  407  ./gradlew :util:tasks
+  408  clear
+  409  ./gradlew :util:tasks
+  410  ./gradlew :util:tasks dependencies
+  411  ./gradlew :util:tasks projects
+  412  ./gradlew -q projects
+  413  ls
+  414  cd util
+  415  vi lib/build.gradle 
+  416  gradle build --stacktrace
+  417  clear
+  418  gradle build --stacktrace
+  419  clear
+  420  gradle build --stacktrace
+  421  clear
+  422  gradle build --stacktrace
+  423  clear
+  424  gradle build --stacktrace
+  425  clear
+  426  cd ..
+  427  ls
+  428  ./gradlew build
+  429  ./gradlew build --stacktrace
+  430  clear
+  431  ./gradlew build
+  432  ./gradlew build --stacktrace
+  433  ./gradlew build --stacktrace --info
+  434  clear
+  435  ./gradlew build --stacktrace --info
+  436  clear
+  437  ./gradlew build --stacktrace --info
+  438  clear
+  439  ./gradlew build --stacktrace --info
+  440  ./gradlew :util:tasks dependencyInsight --stacktrace
+  441  ./gradlew :util:tasks dependencies
+  442  clear
+  443  ./gradlew :util:tasks dependencies
+  444  ./gradlew :util:tasks dependencyInsight
+  445  ./gradlew build --info
+  446  clear
+  447  ./gradlew build --scan
+  448  clear
+  449  ./gradlew build --scan
+  450  cd cd /home/dave/Documents/Gradle-works-to-delete/Latest
+  451  cd /home/dave/Documents/Gradle-works-to-delete/Latest
+  452  spring init --boot-version=3.3.0 --type=gradle-project --java-version=17 --packaging=jar --name=util --package-name=com.david.microservices.alpha.util --groupId=com.david.microservices.alpha.util --dependencies=actuator,webflux --version=1.0.0-SNAPSHOT util
+  453  cd /home/dave/Documents/Workspace-Microservices-alpha
+  454  ls
+  455  ./gradlew build --scan
+  456  clear
+  457  ll
+  458  spring init --boot-version=3.3.0 --type=gradle-project --java-version=17 --packaging=jar --name=product-service --package-name=com.david.microservices.alpha.api --groupId=com.david.microservices.alpha.api --dependencies=actuator,webflux --version=1.0.0-SNAPSHOT api
+  459  clear
+  460  ./gradlew build --scan
+  461  ./gradlew build
+  462  ./gradle -q projects
+  463  ./gradlew -q projects
+  464  ./gradlew :api:tasks
+  465  ./gradlew :api:tasks check
+  466  ./gradlew :api:tasks dependencies
+  467  ./gradlew :api:tasks properties
+  468  ./gradlew :api:tasks resolvableConfigurations
+  469  ./gradlew :api:tasks dependencies
+  470  clear
+  471  ./gradlew build --scan
+  472  ./gradlew :util:tasks build
+  473  ./gradlew build
+  474  clear
+  475  ./gradlew build --stacktrace
+  476  clear
+  477  ./gradlew build --stacktrace
+  478  ./gradlew build --stacktrace --scan
+  479  clear
+  480  ./gradlew build
+  481  java -jar microservices/product-service/build/libs/*.jar
+  482  cd /home/dave/Documents/Workspace-Microservices-alpha
+  483  ./gradlew build
+  484  clear
+  485  ./gradlew build
+  486  clear
+  487  ./gradlew build
+  488  clear
+  489  ./gradlew build
+  490  clear
+  491  ./gradlew build
+  492  cd /home/dave/Documents/Workspace-Microservices-alphaexit
+  493  exit
+  494  kill $(jobs -p)
+  495  cd microservices
+  496  clear
+  497  cd ..
+  498  java -jar microservices/product-composite-service/build/libs/*.jar 
+  499  clear
+  500  java -jar microservices/product-composite-service/build/libs/*.jar 
+  501  clear
+  502  java -jar microservices/product-composite-service/build/libs/*.jar 
+  503  clear
+  504  java -jar microservices/product-composite-service/build/libs/*.jar 
+  505  exit
+  506  exit
+  507  java -jar microservices/recommendation-service/build/libs/*.jar 
+  508  clear
+  509  java -jar microservices/recommendation-service/build/libs/*.jar 
+  510  exit
+  511  java -jar microservices/review-service/build/libs/*.jar 
+  512  exit
+  513  cd /home/dave/Documents/Workspace-Microservices-alpha
+  514  ./gradlew build
+  515  clear
+  516  ./gradlew build
+  517  clear
+  518  ./gradlew build
+  519  exiyt
+  520  exit
+  521  java -jar microservices/review-service/build/libs/*.jar 
+  522  exit
+  523  java -jar microservices/recommendation-service/build/libs/*.jar 
+  524  exit
+  525  java -jar microservices/product-service/build/libs/*.jar 
+  526  ls
+  527  clear
+  528  java -jar microservices/product-service/build/libs/*.jar 
+  529  clear
+  530  java -jar microservices/product-service/build/libs/*.jar 
+  531  exit
+  532  java -jar microservices/product-composite-service/build/libs/*.jar 
+  533  exit
+  534  sudo snap install spectacle
+  535  sudo snap start spectacle
+  536  sudo snap install konquest
+  537  cd /home/dave/Documents/Workspace-Microservices-alpha
+  538  ./gradlew test
+  539  ./gradlew test --scan
+  540  clear
+  541  ./gradlew test --scan
+  542  clear
+  543  ./gradlew test --scan
+  544  clear
+  545  ./gradlew build
+  546  clear
+  547  ./gradlew build
+  548  clear
+  549  ./gradlew test
+  550  clear
+  551  ./gradlew test
+  552  clear
+  553  ./gradlew test
+  554  java -jar microservices/product-composite-service/build/libs/*.jar 
+  555  eitclear
+  556  clear
+  557  java -jar microservices/product-composite-service/build/libs/*.jar 
+  558  clear
+  559  java -jar microservices/product-composite-service/build/libs/*.jar 
+  560  java -jar microservices/product-service/build/libs/*.jar 
+  561  java -jar microservices/recommendation-service/build/libs/*.jar 
+  562  java -jar microservices/review-service/build/libs/*.jar 
+  563  clear
+  564  java -jar microservices/review-service/build/libs/*.jar 
+  565  java -jar microservices/recommendation-service/build/libs/*.jar 
+  566  clear
+  567  java -jar microservices/recommendation-service/build/libs/*.jar 
+  568  java -jar microservices/product-composite-service/build/libs/*.jar 
+  569  clear
+  570  java -jar microservices/product-composite-service/build/libs/*.jar 
+  571  java -jar microservices/product-service/build/libs/*.jar 
+  572  clear
+  573  java -jar microservices/product-service/build/libs/*.jar 
+  574  cd ..
+  575  ll
+  576  cd Worksaves/
+  577  ll
+  578  touch test-em-all.bash
+  579  vi test-em-all.bash 
+  580  cp test-em-all.bash /home/dave/Documents/Workspace-Microservices-alpha
+  581  cd /home/dave/Documents/Workspace-Microservices-alpha
+  582  ll
+  583  ls
+  584  ./test-em-all.bash
+  585  sudo ./test-em-all.bash
+  586  chmod +777 test-em-all.bash 
+  587  ./test-em-all.bash
+  588  vim test-em-all.bash 
+  589  HOST=localhost PORT=7000 ./test-em-all.bash 
+  590  clear
+  591  HOST=localhost PORT=7000 ./test-em-all.bash 
+  592  clear
+  593  HOST=localhost PORT=7000 ./test-em-all.bash 
+  594  clear
+  595  HOST=localhost PORT=7000 ./test-em-all.bash 
+  596  clear
+  597  HOST=localhost PORT=7000 ./test-em-all.bash 
+  598  curl http://localhost:7000/product-composite/1 -s -w "%{http_code}"
+  599  clear
+  600  curl http://localhost:7000/product-composite/1 -s -w "%{http_code}"
+  601  HOST=localhost PORT=7000 ./test-em-all.bash 
+  602  clear
+  603  HOST=localhost PORT=7000 ./test-em-all.bash 
+  604  cd /home/dave/Documents/Workspace-Microservices-alpha
+  605  ls
+  606  ./gradlew test
+  607  ./gradlew build
+  608  clear
+  609  ./gradlew test
+  610  clear
+  611  ./gradlew test
+  612  ./gradlew build
+  613  ./gradlew test
+  614  clear
+  615  ./gradlew test
+  616  ./gradlew test --scan
+  617  ./gradlew test
+  618  clear
+  619  ./gradlew test
+  620  clear
+  621  ./gradlew test
+  622  clear
+  623  ./gradlew test
+  624  clear
+  625  ./gradlew test
+  626  clear
+  627  ./gradlew test
+  628  clear
+  629  ./gradlew test
+  630  ./gradlew build
+  631  cd /home/dave/Documents/Workspace-Microservices-alpha
+  632  ./gradlew build
+  633  ./
+  634  HOST=localhost PORT=7000 ./test-em-all.bash 
+  635  ./gradlew build
+  636  clear
+  637  HOST=localhost PORT=7000 ./test-em-all.bash 
+  638  ./gradlew build
+  639  clear
+  640  ./gradlew build
+  641  HOST=localhost PORT=7000 ./test-em-all.bash 
+  642  exit
+  643  java -jar microservices/product-composite-service/build/libs/*.jar 
+  644  clear
+  645  java -jar microservices/product-composite-service/build/libs/*.jar 
+  646  exit
+  647  java -jar microservices/product-service/build/libs/*.jar 
+  648  clear
+  649  java -jar microservices/product-service/build/libs/*.jar 
+  650  exit
+  651  java -jar microservices/recommendation-service/build/libs/*.jar 
+  652  clear
+  653  java -jar microservices/recommendation-service/build/libs/*.jar 
+  654  exit
+  655  java -jar microservices/review-service/build/libs/*.jar
+  656  clear
+  657  java -jar microservices/review-service/build/libs/*.jar
+  658  exit
+  659  sudo su
+  660  cd /home/dave/Documents/Workspace-Microservices-alpha
+  661  vim README.md
+  662  git init
+  663  git remote add origin git@github.com:david-matu/product-microservices.git
+  664  git add .
+  665  git commit -m "first commit"
+  666  git branch -M main
+  667  git push -u origin main
+  668  eval "$(ssh-agent -s)"
+  669  ssh-add /home/dave/Dav/dav_ssh_key
+  670  git push -u origin main
+  671  docker stop
+  672  sudo systemctl stop docker
+  673  java -Djarmode=layertools -jar app.jar extract
+  674  java -Djarmode=tools extract --layers --launcher -jar app.jar extract
+  675  java -Djarmode=tools extract --layers --launcher -jar app.jar
+  676  java -Djarmode=tools extract --layers --launcher app.jar
+  677  java -Djarmode=tools extract --layers --launcher app.jar extract
+  678  clear
+  679  java -Djarmode=tools -jar app.jar extract
+  680  java -Djarmode=layertools -jar app.jar extract
+  681  docker ps -a
+  682  docker image ls
+  683  cd /home/dave/Documents/Gradle-works-to-delete/Raw/app/application/
+  684  ls
+  685  java org.springframework.boot.loader.JarLauncher
+  686  java org.springframework.boot.loader.launch.JarLauncher
+  687  sudo systemctl start docker
+  688  docker run -it --rm ubuntu
+  689  docker ps -a
+  690  docker image ls
+  691  docker run -it --rm ubuntu
+  692  echo 'Runtime.getRuntime().availableProcessors()' | docker run --rm -i eclipse-temurin:17 jshell -q
+  693  echo 'Runtime.getRuntime().availableProcessors()' | docker run --rm -i --cpus=3 eclipse-temurin:17 jshell -q
+  694  docker run -t --rm elipse-temurin:17 java -XX:+PrintFlagsFinal | grep "size_t MaxHeapSize"
+  695  clear
+  696  docker run -t --rm eclipse-temurin:17 java -XX:+PrintFlagsFinal | grep "size_t MaxHeapSize"
+  697  docker run -t --rm -m=1024M eclipse-temurin:17 java -XX:+PrintFlagsFinal | grep "size_t MaxHeapSize"
+  698  docker run -t --rm -m=1024M eclipse-temurin:17 java -Xmx600m -XX:+PrintFlagsFinal | grep "size_t MaxHeapSize"
+  699  echo 'new byte[100_000_000]' | docker run -i --rm -m=1024M eclipse-temurin:17 jshell -q
+  700  echo 'new byte[100_000_500_0 | docker run -i --rm -m=1024M eclipse-temurin:17 jshell -q
+  701  echo 'new byte[500_000_000] | docker run -i --rm -m=1024M eclipse-temurin:17 jshell -q
+  702  echo 'new byte[500_000_000]' | docker run -i --rm -m=1024M eclipse-temurin:17 jshell -q
+  703  docker image ls
+  704  docker images | grep product-service
+  705  clear
+  706  docker run --rm -p8080:8080 -e "SPRING_PROFILES_ACTIVE=docker" product-service
+  707  sudo systemctl stop gitlab
+  708  sudo gitlab-ctl stop
+  709  sudo yum unistall gitlab
+  710  sudo yum uninstall gitlab
+  711  sudo yum remove gitlab-ce
+  712  sudo -rm -rf /opt/gitlab/
+  713  sudo rm -rf /opt/gitlab/
+  714  sudo rm -rf /var/opt/gitlab
+  715  sudo rm -rf /var/log/gitlab
+  716  sudo rm -rf /etc/gitlab
+  717  clear
+  718  docker run --rm -p8080:8080 -e "SPRING_PROFILES_ACTIVE=docker" product-service
+  719  docker images | grep product-service
+  720  docker rmi product-service
+  721  docker ps -a
+  722  docker images | grep product-service
+  723  docker run --rm -p8080:8080 -e "SPRING_PROFILES_ACTIVE=docker" product-service
+  724  docker image ls -a
+  725  docker ps -a
+  726  docker image ls
+  727  docker rmi d0b4cbdf3bae
+  728  docker image ls
+  729  clear
+  730  docker image ls
+  731  docker run -it --rm ubuntu
+  732  clear
+  733  docker image ls
+  734  docker run --rm -p 8080:8080 -e "SPRING_PROFILES_ACTIVE=docker" product-service
+  735  docker image ls
+  736  docker run --rm -p8080:8080 -e "SPRING_PROFILES_ACTIVE=docker" product-service
+  737  docker rmi product-service
+  738  sudo systemctl docker reload
+  739  sudo systemctl docker restart
+  740  sudo systemctl restart docker
+  741  clear
+  742  docker image ls
+  743  docker rmi ab0ddf8f4e37
+  744  docker image ls
+  745  clear
+  746  docker image ls
+  747  docker run --rm -p8080:8080 -e "SPRING_PROFILES_ACTIVE=docker" product-service
+  748  docker rmi d0b4cbdf3bae
+  749  docker image ls
+  750  docker run --rm -p8080:8080 -e "SPRING_PROFILES_ACTIVE=docker" product-service
+  751  pwd
+  752  cd /home/dave/Documents/Workspace-Microservices-alpha/
+  753  ls
+  754  docker image ls
+  755  clear
+  756  docker run --rm -p8080:8080 -e "SPRING_PROFILES_ACTIVE=docker" product-service
+  757  docker image ls
+  758  docker image history product-service
+  759  docker builder prune
+  760  clear
+  761  ./gradlew :microservices:product-service:build
+  762  docker logs product-service -f
+  763  docker ps
+  764  docker logs magical_gauss -f
+  765  cd /home/dave/Documents/Workspace-microservices-alpha
+  766  cd /home/dave/Documents/Workspace-Microservices-alpha
+  767  ls
+  768  ls -l microservices/product-service/builds/libs
+  769  ls -l microservices/product-service/build/libs
+  770  java -jar  microservices/product-service/build/libs/product-service-1.0.0-SNAPSHOT-plain.jar 
+  771  java -jar  microservices/product-service/build/libs/product-service-1.0.0-SNAPSHOT.jar 
+  772  cd microservices/product-service/build/libs
+  773  pwd
+  774  ls -l
+  775  rf product-service-1.0.0-SNAPSHOT-plain.jar 
+  776  rm -rf product-service-1.0.0-SNAPSHOT-plain.jar 
+  777  ls -l
+  778  rm -rf product-service-1.0.0-SNAPSHOT.jar 
+  779  ls -l
+  780  docker image ls
+  781  ./gradlew :microservices:product-service:build
+  782  docker rmi product-service
+  783  docker build help
+  784  ls
+  785  vim docker-compose.yml
+  786  ls
+  787  ./gradlew build
+  788  docker-compose build
+  789  sudo yum install docker-compose
+  790  sudo yum install docker-compose-plugin
+  791  docker-compose build
+  792  docker compose version
+  793  clear
+  794  docker compose build
+  795  clear
+  796  docker compose up -d
+  797  docker compose logs -f
+  798  docker compose logs -f product review
+  799  docker compose logs product
+  800  clear
+  801  docker compose restart product
+  802  docker compose up -d --scale product=1
+  803  docker ps
+  804  docker compose ps
+  805  docker compose down
+  806  docker ps
+  807  docker ps -a
+  808  ls
+  809  ll
+  810  ls -l
+  811  clear
+  812  ./test-em-all.bash start stop
+  813  docker ps
+  814  ./test-em-all.bash start stop
+  815  docker compose down
+  816  clear
+  817  ./gradlew build
+  818  docker compose build
+  819  docker compose up -d
+  820  history
+  821  clear
+  822  ssh-add /home/dave/Dav/dav_ssh_key
+  823  eval "$(ssh-agent -s)"
+  824  git add .
+  825  git commit -m "Added Dockerfile's and Docker Compose file, updated test script"
+  826  git push origin main
+  827  ssh-add /home/dave/Dav/dav_ssh_key
+  828  git push origin main
+  829  docker ps
+  830  docker compose down
+  831  docker ps -a
+  832  docker-compose --v
+  833  docker ps
+  834  docker images
+  835  docker images | grep workspace
+  836  docker ps
+  837  docker curl localhost:8080/product-composite/123 -s | jq .
+  838  clear
+  839  curl localhost:8080/product-composite/123 -s | jq .
+  840  docker ps
+  841  sudo systemctl start docker
+  842  docker ps -a
+  843  docker image ls
+  844  docker run --rm -p 8080:8080 -e "SPRING_PROFILES_ACTIVE=docker" product-service
+  845  docker compose logs product
+  846  docker ps
+  847  docker rm -f d7b581be0c0a
+  848  docker ps
+  849  sudo systemct start docker
+  850  sudo systemctl start docker
+  851  docker ps
+  852  cd /home/dave/Documents/Workspace-Microservices-alpha
+  853  ls
+  854  ./gradlew build && docker-compose build && docker-compose up -d
+  855  docker compose build && docker compose up -d
+  856  docker ps
+  857  clear
+  858  ssh-add /home/dave/Dav/dav_ssh_key
+  859  eval "$(ssh-agent -s)"
+  860  git add .
+  861  git commit -m "add api docs"
+  862  git push origin main
+  863  ssh-add /home/dave/Dav/dav_ssh_key
+  864  eval "$(ssh-agent -s)"
+  865  git push origin main
+  866  ssh-add /home/dave/Dav/dav_ssh_key
+  867  eval "$(ssh-agent -s)"
+  868  git add .
+  869  git commit -m "add api docs"
+  870  git push origin main
+  871  git remote -v
+  872  eval "$(ssh-agent -s)"
+  873  ssh-add /home/dave/Dav/dav_ssh_key
+  874  git add .
+  875  git commit -m "add api docs"
+  876  git push u origin main
+  877  git push origin main
+  878  exit
+  879  sudo systemctl start docker
+  880  cd /home/dave/Documents/Workspace-Microservices-alpha
+  881  docker compose up -d
+  882  eval "$(ssh-agent -s)"
+  883  ssh-add /home/dave/Dav/dav_ssh_key
+  884  git add .
+  885  git commit -m "corrected docs in properties file"
+  886  git push origin main
+  887  java -version
+  888  java -version
+  889  ls /usr/
+  890  ls /usr/bin
+  891  ls /usr/bin/java 
+  892  vi /usr/bin/java 
+  893  sudo chmod +777 -R /usr/bin/java
+  894  sudo update-alternatives --config java
+  895  java -version
+  896  ls /usr/bin/java 
+  897  sudo update-alternatives --install /usr/bin/java java /opt/jdk-22/bin/java 100
+  898  sudo update-alternatives --config java
+  899  java -version
+  900  java -version
+  901  cd /home/dave/DaveDocs/KeenWrite
+  902  ls
+  903  ./keenwrite.sh 
+  904  docker ps
+  905  ls
+  906  cd Dav
+  907  ls
+  908  cd ..
+  909  mkdir DaveDocs
+  910  ls
+  911  cd DaveDocs/
+  912  git clone git@gitlab.com:DaveJarvis/KeenWrite.git
+  913  git clone https://gitlab.com/DaveJarvis/KeenWrite.git
+  914  ls
+  915  cd KeenWrite/
+  916  ls
+  917  java -version
+  918  ./keenwrite.sh 
+  919  wget "https://keenwrite.com/downloads/keenwrite.jar"
+  920  ls
+  921  ./keenwrite.sh 
+  922  vi keenwrite.sh
+  923  sdk version
+  924  sdk install java
+  925  java -version
+  926  ./keenwrite.sh 
+  927  pwd
+  928  sdk install java-22
+  929  clear
+  930  sdk install java 22
+  931  sudo yum install Java 22
+  932  cd ..
+  933  wget https://download.java.net/java/GA/jdk22.0.1/c7ec1332f7bb44aeba2eb341ae18aca4/8/GPL/openjdk-22.0.1_linux-x64_bin.tar.gz
+  934  ls /opt
+  935  sudo tar -xvf jdk-22.0.1_linux-x64_bin.tar.gz -C /opt
+  936  ls
+  937  sudo tar -xvf openjdk-22.0.1_linux-x64_bin.tar.gz -C /opt
+  938  ls /opt
+  939  ls /etc/profile.d
+  940  vi /etc/profile
+  941  vi /etc/profile.d/java22.sh
+  942  vim /etc/profile.d/java22.sh
+  943  sudo vim /etc/profile.d/java22.sh
+  944  java -version
+  945  echo $HOME
+  946  echo $JAVA_HOME
+  947  ls $JAVA_HOME
+  948  vi /etc/profile
+  949  vi /etc/profile.d
+  950  sudo su
+  951  ls /opt/jdk-22.0.1
+  952  cd /home/dave/DaveDocs/KeenWrite
+  953  ./keenwrite.sh 
+  954  pwd
+  955  /home/dave/DaveDocs/KeenWrite/keenwrite.sh &
+  956  cd /home/dave/Documents/Workspace-Microservices-alpha
+  957  docker compose up -d
+  958  docker compose down
+  959  docker compose up -d
+  960  clear
+  961  docker compose down
+  962  sudo systemctl start docker
+  963  docker ps
+  964  cd ../../../
+  965  ls
+  966  docker image ls
+  967  cd dave/Documents/Workspace-microservices-alpha
+  968  cd dave/Documents/Workspace-microservices-Alpha
+  969  ls
+  970  cd dave/Documents/Workspace-Microservices-alpha
+  971  ls
+  972  clear
+  973  docker-compose exec mongodb mongosh product-db --quiet --eval "db.products.find()"
+  974  docker compose exec mongodb mongosh product-db --quiet --eval "db.products.find()"
+  975  pwd
+  976  docker image ls
+  977  docker ps
+  978  clear
+  979  /home/dave/DaveDocs/KeenWrite/keenwrite.sh &
+  980  cd /home/dave/Documents/Workspace-Microservices-alpha
+  981  tree ./ /F
+  982  tree
+  983  dir
+  984  ll
+  985  /home/dave/DaveDocs/KeenWrite/keenwrite.sh &
+  986  exit
+  987  cd /home/dave/Documents/Code/Microservices_Diary_Git
+  988  ls
+  989  eval "$(ssh-agent -s)"
+  990  ssh-add /home/dave/Dav/dav_ssh_key
+  991  git init
+  992  git remote add origin git@github.com:david-matu/Microservices-Diary.git
+  993  ls
+  994  git remote v
+  995  git remote -v
+  996  git add .
+  997  git commit -m "First commit"
+  998  git push origin main
+  999  sudo snap install drawio
+ 1000  history
+ 1001  history > history_for_print.txt
