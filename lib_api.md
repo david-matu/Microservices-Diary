@@ -49,6 +49,8 @@ tasks.named('test') {
 See entire structure of `api` [here](./project_structure_lib_api.txt)
 
 What's notable from the api lib is the definition of the POJOs for the core entities (product, recommendation, review), composite objects and exceptions:
+
+
 ```sh
 com.david.microservices.alpha.api.core.product
 com.david.microservices.alpha.api.core.recommendation

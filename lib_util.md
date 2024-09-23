@@ -50,6 +50,10 @@ tasks.named('test') {
 ```
 
 ### Project Structure
+
+See entire project structure [here](./project_structure_lib_util.txt)
+
+
 #### `com.david.microservices.alpha.util.http`
 * [GlobalControllerExceptionHandler.class](https://github.com/david-matu/product-microservices/blob/main/util/src/main/java/com/david/microservices/alpha/util/http/GlobalControllerExceptionHandler.java)
 * [HttpErrorInfo.class](https://github.com/david-matu/product-microservices/blob/main/util/src/main/java/com/david/microservices/alpha/util/http/HttpErrorInfo.java)
