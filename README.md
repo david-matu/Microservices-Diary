@@ -105,7 +105,7 @@ ENTRYPOINT [ "java", "org.springframework.boot.loader.launch.JarLauncher" ]
 
 ## The Orchestration
 
-`api` lib [here](./project_structure_lib_api)
+`api` lib [here](./project_structure_lib_api.md)
 
 
 ## Adding Persistence to the microservices
