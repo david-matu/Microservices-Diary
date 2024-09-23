@@ -6,7 +6,7 @@ Project Structure:
 cd /home/dave/Documents/Workspace-Microservices-alpha/api
 ```
 
-See entire structure of `api` [here](./project_structure_lib_api)
+See entire structure of `api` [here](./project_structure_lib_api.txt)
 
 What's notable from the api lib is the definition of the POJOs for the core entities (product, recommendation, review), composite objects and exceptions:
 ```sh
