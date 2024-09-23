@@ -106,6 +106,8 @@ ENTRYPOINT [ "java", "org.springframework.boot.loader.launch.JarLauncher" ]
 ## The Orchestration
 
 [`api`](./lib_api.md) library project has definitions for core classes: Product, Recommendation, Review, ProductAggregate and as well, exceptions classes InvalidInputException, NotFoundException
+
+
 [`util`](./lib_util.md) library project defines utility classes namely GlobalControllerExceptionHandler, HttpErrorInfo, ServiceUtil
 
 
