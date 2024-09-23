@@ -1,9 +1,49 @@
-### This is the `api` library documentation
+### `api` library documentation
 > Sep 23, 2024
 
 Project Structure:
 ```sh
-cd /home/dave/Documents/Workspace-Microservices-alpha/api
+cd /home/dave/Documents/Workspace-api-Microservices/alpha
+```
+
+#### Build Settings `build.gradle`
+```sh
+plugins {
+	id 'io.spring.dependency-management' version '1.1.5'
+	id 'java'
+}
+
+group = 'com.david.microservices.alpha.api'
+version = '1.0.0-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+    springBootVersion = '3.3.0'
+}
+
+dependencies {
+	
+	implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	
+	implementation 'org.springdoc:springdoc-openapi-starter-webflux-ui:2.0.2'
+	
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
 ```
 
 See entire structure of `api` [here](./project_structure_lib_api.txt)
@@ -47,5 +87,10 @@ For each:
 5. [ServiceAddresses.java](https://github.com/david-matu/product-microservices/blob/main/api/src/main/java/com/david/microservices/alpha/api/composite/product/ServiceAddresses.java)
 
 
+To enable this library resolvable for import by other projects, the `settings.gradle` file looks like this:
+```sh
+rootProject.name = 'api'
+
+```
 
 
