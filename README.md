@@ -103,6 +103,11 @@ EXPOSE 8080
 ENTRYPOINT [ "java", "org.springframework.boot.loader.launch.JarLauncher" ]
 ```
 
+## The Orchestration
+
+`api` lib [here](./project_structure_lib_api)
+
+
 ## Adding Persistence to the microservices
 > Aug_27_2024  
 Featuring **MongoDB** and **MySQL** databases
@@ -298,4 +303,149 @@ public class RecommendationEntity {
 ```
 
 
+Create the `RecommendationRepository`:
+```java
+package com.david.microservices.alpha.recommendation.persistence;
 
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface RecommendationRepository extends CrudRepository<RecommendationEntity, String>{
+	
+	List<RecommendationEntity> findByProductId(int productId);
+}
+```
+
+
+Create `RecommendationMapper`:
+```java
+package com.david.microservices.alpha.recommendation.services;
+
+import java.util.List;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+
+import com.david.microservices.alpha.api.core.recommendation.Recommendation;
+import com.david.microservices.alpha.recommendation.persistence.RecommendationEntity;
+
+@Mapper(componentModel = "spring")
+public interface RecommendationMapper {
+	
+	@Mappings({
+		@Mapping(target = "rate", source = "entity.rating"),
+		@Mapping(target = "serviceAddress", ignore = true)
+	})
+	Recommendation entityToApi(RecommendationEntity entity);
+	
+	@Mappings({
+		@Mapping(target = "rating", source = "api.rate"),
+		@Mapping(target = "id", ignore = true),
+		@Mapping(target = "version", ignore = true)
+	})
+	RecommendationEntity apiToEntity(Recommendation api);
+	
+	List<Recommendation> entityListToApiList(List<RecommendationEntity> entity);
+	
+	List<RecommendationEntity> apiListToEntityList(List<Recommendation> api);
+}
+```
+
+##### review microservice
+Create `ReviewEntity`
+```java
+package com.david.microservices.alpha.review.persistence;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Index;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "reviews", indexes = { @Index(name = "reviews_unique_idx", unique = true, columnList = "productId,reviewId") })
+public class ReviewEntity {
+	
+	@Id
+	@GeneratedValue
+	private int id;
+	
+	@Version
+	private int version;
+	
+	private int productId;
+	private int reviewId;
+	private String author;
+	private String subject;
+	private String content;
+	
+	public ReviewEntity() {}
+	
+	public ReviewEntity(int productId, int reviewId, String author, String subject, String content) {
+		this.productId = productId;
+		this.reviewId = reviewId;
+		this.author = author;
+		this.subject = subject;
+		this.content = content;
+	}
+
+	// ...
+	
+}
+
+```
+
+Create `ReviewRepository`:
+```java
+package com.david.microservices.alpha.review.persistence;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.transaction.annotation.Transactional;
+
+public interface ReviewRepository extends CrudRepository<ReviewEntity, Integer>{
+	
+	@Transactional(readOnly = true)
+	List<ReviewEntity> findByProductId(int productId);
+}
+
+```
+
+
+Create `ReviewMapper`:
+```java
+package com.david.microservices.alpha.review.services;
+
+import java.util.List;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+
+import com.david.microservices.alpha.api.core.review.Review;
+import com.david.microservices.alpha.review.persistence.ReviewEntity;
+
+@Mapper(componentModel = "spring")
+public interface ReviewMapper {
+	
+	@Mappings({
+		@Mapping(target = "serviceAddress", ignore = true)
+	})
+	Review entityToApi(ReviewEntity entity);
+	
+	@Mappings({
+		@Mapping(target = "id", ignore = true),
+		@Mapping(target = "version", ignore = true)
+	})
+	ReviewEntity apiToEntity(Review api);
+	
+	List<Review> entityListToApiList(List<ReviewEntity> entity);
+	
+	List<ReviewEntity> apiListToEntityList(List<Review> api);
+}
+```
