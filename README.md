@@ -15,7 +15,7 @@ The composite makes the actual communication to the microservices and delivers a
 
 ### Project structure
 Current directory structure:
-```
+```sh
 [dave@localhost Workspace-Microservices-alpha]$ ll
 total 36
 drwxr-xr-x. 7 dave dave  165 Jul 28 14:19 api
@@ -33,7 +33,7 @@ drwxr-xr-x. 8 dave dave 4096 Jul 27 08:57 util
 
 ### Including libraries in the project (featuring the `product microservice`)
 Ensure the following is in the `settings.gradle` file of the project:
-```
+```sh
 rootProject.name = 'product-service'
 include('api')
 include('util')
@@ -42,7 +42,7 @@ include project(':util').projectDir = new File(settingsDir, '../../util')
 ```
 
 The complete ``build.gradle`` content:
-```
+```sh
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.0'
@@ -87,7 +87,7 @@ tasks.named('test') {
 
 ### Add Dockerfiles
 Use the following ``Dockerfile`` content:
-```
+```sh
 FROM eclipse-temurin:17.0.5_8-jre-focal as builder
 WORKDIR /extracted
 ADD ./build/libs/*.jar app.jar
@@ -117,7 +117,7 @@ Featuring **MongoDB** and **MySQL** databases
 
 Open the ``docker-compose.yml`` file and add the following entries under ``services``:  
 
-```
+```yaml
 services:
    mongodb:
    image: mongo:6.0.4
@@ -153,7 +153,8 @@ The `product` and `recommendation` microservices, will use **MongoDB** while the
 ### 1. Add dependencies
 ##### Product and Review microservices
 In the `build.gradle` file of both projects, add the following:
-```
+```sh
+//Mapstruct generates implementation of the bean mappings at compile time by processing MapStruct annotations
 ext {
 	mapstructVersion = "1.5.3.Final"
 }
@@ -183,7 +184,7 @@ dependencies {
 ### 2. Add the codes  
 ##### product microservice  
 Create `product entity`
-```
+```java
 @Document(collection = "products")
 public class ProductEntity {
 	@Id private String id;
@@ -207,6 +208,53 @@ public class ProductEntity {
 }
 ```
 
-Will continue as we discover more
+// SEP_23_2024
+Create `product repository`
+
+```java
+package com.david.microservices.alpha.product.persistence;
+
+import java.util.Optional;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+public interface ProductRepository extends PagingAndSortingRepository<ProductEntity, String>, CrudRepository<ProductEntity, String>{
+	
+	Optional<ProductEntity> findByProductId(int productId);
+}
+```
+
+Create `product mapper`
+```java
+package com.david.microservices.alpha.product.services;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+
+import com.david.microservices.alpha.api.core.product.Product;
+import com.david.microservices.alpha.product.persistence.ProductEntity;
+
+@Mapper(componentModel = "spring")
+public interface ProductMapper {
+	
+	@Mappings({
+		@Mapping(target = "serviceAddress", ignore = true)
+	})
+	Product entityToApi(ProductEntity entity);
+	
+	@Mappings({
+		@Mapping(target = "id", ignore = true), 
+		@Mapping(target = "version", ignore = true)
+	})
+	ProductEntity apiToEntity(Product api);
+}
+```
+
+
+
+
+
 
 
