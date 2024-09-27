@@ -18,8 +18,8 @@ tree ./ > /home/dave/Documents/Code/Microservices_Diary_Git/project_structure_mi
 ```
 
 #### Project Structure for each microservice
-[product-service](./project_structure_microservice_product.txt)
-[recommendation-service](./project_structure_microservice_recommendation.txt)
-[review-service](./project_structure_microservice_review.txt)
-[product-composite-service](./project_structure_microservice_product_composite.txt)
+* [product-service](./project_structure_microservice_product.txt)
+* [recommendation-service](./project_structure_microservice_recommendation.txt)
+* [review-service](./project_structure_microservice_review.txt)
+* [product-composite-service](./project_structure_microservice_product_composite.txt)
 
