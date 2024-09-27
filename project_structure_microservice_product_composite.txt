@@ -1,0 +1,141 @@
+./
+├── bin
+│   ├── main
+│   │   ├── application.yml
+│   │   └── com
+│   │       └── david
+│   │           └── microservices
+│   │               └── alpha
+│   │                   └── composite
+│   │                       ├── configs
+│   │                       │   └── AppConfigs.class
+│   │                       ├── product
+│   │                       │   └── services
+│   │                       │       ├── ProductCompositeIntegration$1.class
+│   │                       │       ├── ProductCompositeIntegration$2.class
+│   │                       │       ├── ProductCompositeIntegration.class
+│   │                       │       └── ProductCompositeServiceImpl.class
+│   │                       └── ProductCompositeServiceApplication.class
+│   └── test
+│       └── com
+│           └── david
+│               └── microservices
+│                   └── alpha
+│                       └── composite
+│                           └── ProductCompositeServiceApplicationTests.class
+├── build
+│   ├── classes
+│   │   └── java
+│   │       ├── main
+│   │       │   └── com
+│   │       │       └── david
+│   │       │           └── microservices
+│   │       │               └── alpha
+│   │       │                   └── composite
+│   │       │                       ├── configs
+│   │       │                       │   └── AppConfigs.class
+│   │       │                       ├── product
+│   │       │                       │   └── services
+│   │       │                       │       ├── ProductCompositeIntegration$1.class
+│   │       │                       │       ├── ProductCompositeIntegration$2.class
+│   │       │                       │       ├── ProductCompositeIntegration$3.class
+│   │       │                       │       ├── ProductCompositeIntegration.class
+│   │       │                       │       └── ProductCompositeServiceImpl.class
+│   │       │                       └── ProductCompositeServiceApplication.class
+│   │       └── test
+│   │           └── com
+│   │               └── david
+│   │                   └── microservices
+│   │                       └── alpha
+│   │                           └── composite
+│   │                               └── ProductCompositeServiceApplicationTests.class
+│   ├── generated
+│   │   └── sources
+│   │       ├── annotationProcessor
+│   │       │   └── java
+│   │       │       ├── main
+│   │       │       └── test
+│   │       └── headers
+│   │           └── java
+│   │               ├── main
+│   │               └── test
+│   ├── libs
+│   │   ├── product-composite-service-1.0.0-SNAPSHOT.jar
+│   │   └── product-composite-service-1.0.0-SNAPSHOT-plain.jar
+│   ├── reports
+│   │   └── tests
+│   │       └── test
+│   │           ├── classes
+│   │           │   └── com.david.microservices.alpha.composite.ProductCompositeServiceApplicationTests.html
+│   │           ├── css
+│   │           │   ├── base-style.css
+│   │           │   └── style.css
+│   │           ├── index.html
+│   │           ├── js
+│   │           │   └── report.js
+│   │           └── packages
+│   │               └── com.david.microservices.alpha.composite.html
+│   ├── resolvedMainClassName
+│   ├── resources
+│   │   └── main
+│   │       └── application.yml
+│   ├── test-results
+│   │   └── test
+│   │       ├── binary
+│   │       │   ├── output.bin
+│   │       │   ├── output.bin.idx
+│   │       │   └── results.bin
+│   │       └── TEST-com.david.microservices.alpha.composite.ProductCompositeServiceApplicationTests.xml
+│   └── tmp
+│       ├── bootJar
+│       │   └── MANIFEST.MF
+│       ├── compileJava
+│       │   ├── compileTransaction
+│       │   │   ├── backup-dir
+│       │   │   └── stash-dir
+│       │   │       ├── ProductCompositeIntegration$1.class.uniqueId0
+│       │   │       ├── ProductCompositeIntegration$2.class.uniqueId3
+│       │   │       ├── ProductCompositeIntegration$3.class.uniqueId1
+│       │   │       ├── ProductCompositeIntegration.class.uniqueId4
+│       │   │       └── ProductCompositeServiceImpl.class.uniqueId2
+│       │   └── previous-compilation-data.bin
+│       ├── compileTestJava
+│       │   ├── compileTransaction
+│       │   │   ├── backup-dir
+│       │   │   └── stash-dir
+│       │   │       └── ProductCompositeServiceApplicationTests.class.uniqueId0
+│       │   └── previous-compilation-data.bin
+│       ├── jar
+│       │   └── MANIFEST.MF
+│       └── test
+├── build.gradle
+├── Dockerfile
+├── HELP.md
+├── settings.gradle
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── david
+    │   │           └── microservices
+    │   │               └── alpha
+    │   │                   └── composite
+    │   │                       ├── configs
+    │   │                       │   └── AppConfigs.java
+    │   │                       ├── product
+    │   │                       │   └── services
+    │   │                       │       ├── ProductCompositeIntegration.java
+    │   │                       │       └── ProductCompositeServiceImpl.java
+    │   │                       └── ProductCompositeServiceApplication.java
+    │   └── resources
+    │       └── application.yml
+    └── test
+        └── java
+            └── com
+                └── david
+                    └── microservices
+                        └── alpha
+                            └── composite
+                                └── ProductCompositeServiceApplicationTests.java
+
+88 directories, 50 files

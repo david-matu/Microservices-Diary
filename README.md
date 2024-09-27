@@ -1,6 +1,6 @@
-# Microservices with Spring Boot 3.3 / Gradle 8.8 / Docker / Kubernetes
+## Microservices with Spring Boot 3.3 / Gradle 8.8 / Docker / Kubernetes
 
-[GitHub: https://github.com/david-matu/product-microservices](https://github.com/david-matu/product-microservices)
+GitHub: [https://github.com/david-matu/product-microservices](https://github.com/david-matu/product-microservices)
 
 Featuring microservices architecture, the walk aims to build an end-to-end Product Service supported by modern stacks: Spring Boot, Gradle, Docker, Kubernetes, monitoring and logging tools which I'll list below.  
 This repo contains codebase for the Product Service comprising:
@@ -105,17 +105,19 @@ ENTRYPOINT [ "java", "org.springframework.boot.loader.launch.JarLauncher" ]
 
 ## The Orchestration
 
-[`api`](./lib_api.md) library project has definitions for core classes: Product, Recommendation, Review, ProductAggregate and as well, exceptions classes InvalidInputException, NotFoundException
+[`api`](./lib_api.md) library project has definitions for core classes: `Product`, `Recommendation`, `Review`, `ProductAggregate` and as well, exceptions classes `InvalidInputException`, `NotFoundException`
 
 
-[`util`](./lib_util.md) library project defines utility classes namely GlobalControllerExceptionHandler, HttpErrorInfo, ServiceUtil
+[`util`](./lib_util.md) library project, purposed to handle protocol level information, defines utility classes namely `GlobalControllerExceptionHandler`, `HttpErrorInfo`, `ServiceUtil`
+
+
+[`microservices`](./microservices.md) subprojects have concrete implementation to deliver info regarding a product
 
 
 ## Adding Persistence to the microservices
 > Aug_27_2024  
 Featuring **MongoDB** and **MySQL** databases
 
-:sunny:
 
 ##### Installing MongoDB
 - [x] Setup Mongo DB image
@@ -123,7 +125,7 @@ Featuring **MongoDB** and **MySQL** databases
 
 `cd /home/dave/Documents/Workspace-Microservices-alpha`
 
-Open the ``docker-compose.yml`` file and add the following entries under ``services``:  
+Open the ``docker-compose.yml`` file and add the following entries for ``services``:  
 
 ```yaml
 services:
@@ -190,8 +192,8 @@ dependencies {
 ```
 
 ### 2. Add the codes for Persistence and Mapping 
-##### product microservice  
-Create `product entity`
+##### Product microservice  
+Create `ProductEntity`
 ```java
 @Document(collection = "products")
 public class ProductEntity {
@@ -216,10 +218,10 @@ public class ProductEntity {
 }
 ```
 
-// SEP_23_2024
+> // SEP_23_2024
 
 
-Create `product repository`
+Create `ProductRepository`
 
 ```java
 package com.david.microservices.alpha.product.persistence;
@@ -235,7 +237,15 @@ public interface ProductRepository extends PagingAndSortingRepository<ProductEnt
 }
 ```
 
-Create `product mapper`
+Create `ProductMapper`
+
+This interface provides conversion of an api(core) object into entity object that is understandable by the persistence spectrum, and vise-versa. 
+
+
+You can see that the `@Mappings` annotations specifying fields to ignore during conversion. For example, the `id` and `version` attributes of 
+`ProductEntity` will be ignored 
+
+
 ```java
 package com.david.microservices.alpha.product.services;
 
@@ -262,7 +272,7 @@ public interface ProductMapper {
 }
 ```
 
-##### recommendation microservice
+##### Recommendation microservice
 
 Create `RecommendationEntity`
 ```java
@@ -356,7 +366,7 @@ public interface RecommendationMapper {
 }
 ```
 
-##### review microservice
+##### Review microservice
 Create `ReviewEntity`
 ```java
 package com.david.microservices.alpha.review.persistence;
@@ -420,7 +430,8 @@ public interface ReviewRepository extends CrudRepository<ReviewEntity, Integer>{
 ```
 
 
-Create `ReviewMapper`:
+Create `ReviewMapper` interface:
+
 ```java
 package com.david.microservices.alpha.review.services;
 
@@ -452,3 +463,5 @@ public interface ReviewMapper {
 	List<ReviewEntity> apiListToEntityList(List<Review> api);
 }
 ```
+
+

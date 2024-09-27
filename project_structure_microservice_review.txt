@@ -1,0 +1,127 @@
+./
+├── bin
+│   ├── main
+│   │   ├── application.yml
+│   │   └── com
+│   │       └── david
+│   │           └── microservices
+│   │               └── alpha
+│   │                   └── review
+│   │                       ├── persistence
+│   │                       │   ├── ReviewEntity.class
+│   │                       │   └── ReviewRepository.class
+│   │                       ├── ReviewServiceApplication.class
+│   │                       └── services
+│   │                           ├── ReviewMapper.class
+│   │                           └── ReviewServiceImpl.class
+│   └── test
+│       └── com
+│           └── david
+│               └── microservices
+│                   └── alpha
+│                       └── review
+│                           └── ReviewServiceApplicationTests.class
+├── build
+│   ├── classes
+│   │   └── java
+│   │       ├── main
+│   │       │   └── com
+│   │       │       └── david
+│   │       │           └── microservices
+│   │       │               └── alpha
+│   │       │                   └── review
+│   │       │                       ├── ReviewServiceApplication.class
+│   │       │                       └── services
+│   │       │                           └── ReviewServiceImpl.class
+│   │       └── test
+│   │           └── com
+│   │               └── david
+│   │                   └── microservices
+│   │                       └── alpha
+│   │                           └── review
+│   │                               └── ReviewServiceApplicationTests.class
+│   ├── generated
+│   │   └── sources
+│   │       ├── annotationProcessor
+│   │       │   └── java
+│   │       │       ├── main
+│   │       │       └── test
+│   │       └── headers
+│   │           └── java
+│   │               ├── main
+│   │               └── test
+│   ├── libs
+│   │   ├── review-service-1.0.0-SNAPSHOT.jar
+│   │   └── review-service-1.0.0-SNAPSHOT-plain.jar
+│   ├── reports
+│   │   └── tests
+│   │       └── test
+│   │           ├── classes
+│   │           │   └── com.david.microservices.alpha.review.ReviewServiceApplicationTests.html
+│   │           ├── css
+│   │           │   ├── base-style.css
+│   │           │   └── style.css
+│   │           ├── index.html
+│   │           ├── js
+│   │           │   └── report.js
+│   │           └── packages
+│   │               └── com.david.microservices.alpha.review.html
+│   ├── resolvedMainClassName
+│   ├── resources
+│   │   └── main
+│   │       └── application.yml
+│   ├── test-results
+│   │   └── test
+│   │       ├── binary
+│   │       │   ├── output.bin
+│   │       │   ├── output.bin.idx
+│   │       │   └── results.bin
+│   │       └── TEST-com.david.microservices.alpha.review.ReviewServiceApplicationTests.xml
+│   └── tmp
+│       ├── bootJar
+│       │   └── MANIFEST.MF
+│       ├── compileJava
+│       │   ├── compileTransaction
+│       │   │   ├── backup-dir
+│       │   │   └── stash-dir
+│       │   │       └── ReviewServiceImpl.class.uniqueId0
+│       │   └── previous-compilation-data.bin
+│       ├── compileTestJava
+│       │   ├── compileTransaction
+│       │   │   ├── backup-dir
+│       │   │   └── stash-dir
+│       │   └── previous-compilation-data.bin
+│       ├── jar
+│       │   └── MANIFEST.MF
+│       └── test
+├── build.gradle
+├── Dockerfile
+├── HELP.md
+├── settings.gradle
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── david
+    │   │           └── microservices
+    │   │               └── alpha
+    │   │                   └── review
+    │   │                       ├── persistence
+    │   │                       │   ├── ReviewEntity.java
+    │   │                       │   └── ReviewRepository.java
+    │   │                       ├── ReviewServiceApplication.java
+    │   │                       └── services
+    │   │                           ├── ReviewMapper.java
+    │   │                           └── ReviewServiceImpl.java
+    │   └── resources
+    │       └── application.yml
+    └── test
+        └── java
+            └── com
+                └── david
+                    └── microservices
+                        └── alpha
+                            └── review
+                                └── ReviewServiceApplicationTests.java
+
+84 directories, 40 files

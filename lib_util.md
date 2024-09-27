@@ -14,6 +14,7 @@ project(':api').projectDir = new File(settingsDir, '../api')
 #### `build.gradle`
 ```sh
 plugins {
+	// id 'org.springframework.boot' version '3.3.0'
 	id 'io.spring.dependency-management' version '1.1.5'
 	id 'java'
 }
@@ -49,12 +50,3 @@ tasks.named('test') {
 }
 ```
 
-### Project Structure
-
-See entire project structure [here](./project_structure_lib_util.txt)
-
-
-#### `com.david.microservices.alpha.util.http`
-* [GlobalControllerExceptionHandler.class](https://github.com/david-matu/product-microservices/blob/main/util/src/main/java/com/david/microservices/alpha/util/http/GlobalControllerExceptionHandler.java)
-* [HttpErrorInfo.class](https://github.com/david-matu/product-microservices/blob/main/util/src/main/java/com/david/microservices/alpha/util/http/HttpErrorInfo.java)
-* [ServiceUtil.class](https://github.com/david-matu/product-microservices/blob/main/util/src/main/java/com/david/microservices/alpha/util/http/ServiceUtil.java)
