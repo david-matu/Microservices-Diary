@@ -7,7 +7,7 @@ cd /home/dave/Documents/Workspace-Microservices-alpha/microservices
 ```sh
 [dave@localhost microservices]$ ll
 total 16
-drwxr-xr-x. 7 dave dave 4096 Aug 20 00:01 product-composite-service
+drwxr-xr-x. 7 dave dave 4096 Aug 20 00:01 [product-composite-service](https://github.com/david-matu/product-microservices/tree/main/microservices/product-service)
 drwxr-xr-x. 7 dave dave 4096 Aug 19 08:02 product-service
 drwxr-xr-x. 7 dave dave 4096 Aug 19 08:03 recommendation-service
 drwxr-xr-x. 7 dave dave 4096 Aug 19 08:03 review-service
