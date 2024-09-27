@@ -18,9 +18,9 @@ tree ./ > /home/dave/Documents/Code/Microservices_Diary_Git/project_structure_mi
 ```
 
 #### Project Structure for each microservice
-* [product-service](https://github.com/david-matu/product-microservices/tree/main/microservices/product-service) [`:cactus: tree`](./project_structure_microservice_product.txt)
-* [recommendation-service](https://github.com/david-matu/product-microservices/tree/main/microservices/recommendation-service) [:cactus: tree](./project_structure_microservice_recommendation.txt)
-* [review-service](https://github.com/david-matu/product-microservices/tree/main/microservices/review-service) [:cactus: tree](./project_structure_microservice_review.txt)
-* [product-composite-service](https://github.com/david-matu/product-microservices/tree/main/microservices/product-composite-service) [:cactus: tree](./project_structure_microservice_product_composite.txt)
+* [product-service](https://github.com/david-matu/product-microservices/tree/main/microservices/product-service) [:cactus: `tree`](./project_structure_microservice_product.txt)
+* [recommendation-service](https://github.com/david-matu/product-microservices/tree/main/microservices/recommendation-service) [:cactus: `tree`](./project_structure_microservice_recommendation.txt)
+* [review-service](https://github.com/david-matu/product-microservices/tree/main/microservices/review-service) [:cactus: `tree`](./project_structure_microservice_review.txt)
+* [product-composite-service](https://github.com/david-matu/product-microservices/tree/main/microservices/product-composite-service) [:cactus: `tree`](./project_structure_microservice_product_composite.txt)
 
 
