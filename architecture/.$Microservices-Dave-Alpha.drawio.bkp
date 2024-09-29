@@ -507,32 +507,6 @@
         <mxCell id="hb8yN7ki5tc-NCy5Gg7z-171" value="- getErrorMessage(ex: HttpClientErrorException)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="hb8yN7ki5tc-NCy5Gg7z-158">
           <mxGeometry y="360" width="770" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="hb8yN7ki5tc-NCy5Gg7z-172" value="ProductCompositeServiceImpl" style="swimlane;fontStyle=1;align=center;verticalAlign=bottom;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;gradientColor=none;fillColor=default;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="840" y="1490" width="770" height="180" as="geometry">
-            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="hb8yN7ki5tc-NCy5Gg7z-173" value="- serviceUtil: ServiceUtil" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="hb8yN7ki5tc-NCy5Gg7z-172">
-          <mxGeometry y="26" width="770" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="hb8yN7ki5tc-NCy5Gg7z-179" value="- integration: ProductCompositeIntegration" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="hb8yN7ki5tc-NCy5Gg7z-172">
-          <mxGeometry y="52" width="770" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="hb8yN7ki5tc-NCy5Gg7z-174" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="hb8yN7ki5tc-NCy5Gg7z-172">
-          <mxGeometry y="78" width="770" height="8" as="geometry" />
-        </mxCell>
-        <mxCell id="hb8yN7ki5tc-NCy5Gg7z-175" value="+ ProductCompositeServiceImpl(serviceUtil: ServiceUtil, integration: ProductCompositeIntegration)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="hb8yN7ki5tc-NCy5Gg7z-172">
-          <mxGeometry y="86" width="770" height="24" as="geometry" />
-        </mxCell>
-        <mxCell id="hb8yN7ki5tc-NCy5Gg7z-180" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="hb8yN7ki5tc-NCy5Gg7z-172">
-          <mxGeometry y="110" width="770" height="8" as="geometry" />
-        </mxCell>
-        <mxCell id="hb8yN7ki5tc-NCy5Gg7z-176" value="+ getProduct(productId: int): ProductAggregate" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="hb8yN7ki5tc-NCy5Gg7z-172">
-          <mxGeometry y="118" width="770" height="24" as="geometry" />
-        </mxCell>
-        <mxCell id="hb8yN7ki5tc-NCy5Gg7z-177" value="+ createProduct(product: Product, recommendations: List&lt;Recommendation&gt;, reviews: List&lt;Reviews&gt;, serviceAddress: String)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="hb8yN7ki5tc-NCy5Gg7z-172">
-          <mxGeometry y="142" width="770" height="24" as="geometry" />
-        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

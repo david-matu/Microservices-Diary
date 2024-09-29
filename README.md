@@ -113,6 +113,7 @@ ENTRYPOINT [ "java", "org.springframework.boot.loader.launch.JarLauncher" ]
 
 [`microservices`](./microservices.md) subprojects have concrete implementation to deliver info regarding a product
 
+![View UML](./architecture/Microservices-Dave-Alpha.drawio.svg)
 
 ## Adding Persistence to the microservices
 > Aug_27_2024  
