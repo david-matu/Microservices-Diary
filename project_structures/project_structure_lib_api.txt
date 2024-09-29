@@ -1,0 +1,45 @@
+[dave@localhost api]$ tree ./
+./
+├── build.gradle
+├── HELP.md
+├── settings.gradle
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── david
+    │   │           └── microservices
+    │   │               └── alpha
+    │   │                   └── api
+    │   │                       ├── composite
+    │   │                       │   └── product
+    │   │                       │       ├── ProductAggregate.java
+    │   │                       │       ├── ProductCompositeService.java
+    │   │                       │       ├── RecommendationSummary.java
+    │   │                       │       ├── ReviewSummary.java
+    │   │                       │       └── ServiceAddresses.java
+    │   │                       ├── core
+    │   │                       │   ├── product
+    │   │                       │   │   ├── Product.java
+    │   │                       │   │   └── ProductService.java
+    │   │                       │   ├── recommendation
+    │   │                       │   │   ├── Recommendation.java
+    │   │                       │   │   └── RecommendationService.java
+    │   │                       │   └── review
+    │   │                       │       ├── Review.java
+    │   │                       │       └── ReviewService.java
+    │   │                       └── exceptions
+    │   │                           ├── BadRequestException.java
+    │   │                           ├── InvalidInputException.java
+    │   │                           └── NotFoundException.java
+    │   └── resources
+    └── test
+        └── java
+            └── com
+                └── david
+                    └── microservices
+                        └── alpha
+                            └── api
+
+74 directories, 48 files
+

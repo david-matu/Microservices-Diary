@@ -1,0 +1,32 @@
+./
+├── build.gradle
+├── Dockerfile
+├── HELP.md
+├── settings.gradle
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── david
+    │   │           └── microservices
+    │   │               └── alpha
+    │   │                   └── recommendation
+    │   │                       ├── persistence
+    │   │                       │   ├── RecommendationEntity.java
+    │   │                       │   └── RecommendationRepository.java
+    │   │                       ├── RecommendationServiceApplication.java
+    │   │                       └── services
+    │   │                           ├── RecommendationMapper.java
+    │   │                           └── RecommendationServiceImpl.java
+    │   └── resources
+    │       └── application.yml
+    └── test
+        └── java
+            └── com
+                └── david
+                    └── microservices
+                        └── alpha
+                            └── recommendation
+                                └── RecommendationServiceApplicationTests.java
+
+84 directories, 40 files

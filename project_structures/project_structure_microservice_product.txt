@@ -1,0 +1,32 @@
+./
+├── build.gradle
+├── Dockerfile
+├── HELP.md
+├── settings.gradle
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── david
+    │   │           └── microservices
+    │   │               └── alpha
+    │   │                   └── product
+    │   │                       ├── persistence
+    │   │                       │   ├── ProductEntity.java
+    │   │                       │   └── ProductRepository.java
+    │   │                       ├── ProductServiceApplication.java
+    │   │                       └── services
+    │   │                           ├── ProductMapper.java
+    │   │                           └── ProductServiceImpl.java
+    │   └── resources
+    │       └── application.yml
+    └── test
+        └── java
+            └── com
+                └── david
+                    └── microservices
+                        └── alpha
+                            └── product
+                                └── ProductServiceApplicationTests.java
+
+84 directories, 39 files

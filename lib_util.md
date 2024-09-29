@@ -1,7 +1,7 @@
 ## `util` library documentation
 > Sep 23, 2024
 
-This library project is based on Gradle and uses the `api` project.
+This library project is based on Gradle and uses the `api` project to define protocol level information such as HTTP exceptions and service addresses.
 
 #### `settings.gradle`
 To resolve the dependency on `api` project, the following `settings.gradle` content has been observed:
@@ -50,3 +50,12 @@ tasks.named('test') {
 }
 ```
 
+#### Classes
+* [GlobalControllerExceptionHandler](https://github.com/david-matu/product-microservices/blob/main/util/src/main/java/com/david/microservices/alpha/util/http/GlobalControllerExceptionHandler.java)
+Defines what exception handlers will effect when a given response has HTTP status code (when error).
+
+* [HttpErrorInfo](https://github.com/david-matu/product-microservices/blob/main/util/src/main/java/com/david/microservices/alpha/util/http/HttpErrorInfo.java)
+Finds the http status code and message returned in case there is error, alongside the path and timestamp of the resource being requested.
+
+* [ServiceUtil](https://github.com/david-matu/product-microservices/blob/main/util/src/main/java/com/david/microservices/alpha/util/http/ServiceUtil.java)
+Finds the host name, IP address and port used by a microservice

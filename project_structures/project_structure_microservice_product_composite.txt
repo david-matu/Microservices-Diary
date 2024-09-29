@@ -1,0 +1,32 @@
+./
+├── build.gradle
+├── Dockerfile
+├── HELP.md
+├── settings.gradle
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── david
+    │   │           └── microservices
+    │   │               └── alpha
+    │   │                   └── composite
+    │   │                       ├── configs
+    │   │                       │   └── AppConfigs.java
+    │   │                       ├── product
+    │   │                       │   └── services
+    │   │                       │       ├── ProductCompositeIntegration.java
+    │   │                       │       └── ProductCompositeServiceImpl.java
+    │   │                       └── ProductCompositeServiceApplication.java
+    │   └── resources
+    │       └── application.yml
+    └── test
+        └── java
+            └── com
+                └── david
+                    └── microservices
+                        └── alpha
+                            └── composite
+                                └── ProductCompositeServiceApplicationTests.java
+
+88 directories, 50 files

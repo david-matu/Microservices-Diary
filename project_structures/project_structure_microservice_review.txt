@@ -1,0 +1,32 @@
+./
+├── build.gradle
+├── Dockerfile
+├── HELP.md
+├── settings.gradle
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── david
+    │   │           └── microservices
+    │   │               └── alpha
+    │   │                   └── review
+    │   │                       ├── persistence
+    │   │                       │   ├── ReviewEntity.java
+    │   │                       │   └── ReviewRepository.java
+    │   │                       ├── ReviewServiceApplication.java
+    │   │                       └── services
+    │   │                           ├── ReviewMapper.java
+    │   │                           └── ReviewServiceImpl.java
+    │   └── resources
+    │       └── application.yml
+    └── test
+        └── java
+            └── com
+                └── david
+                    └── microservices
+                        └── alpha
+                            └── review
+                                └── ReviewServiceApplicationTests.java
+
+84 directories, 40 files
