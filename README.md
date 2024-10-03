@@ -469,7 +469,7 @@ public interface ReviewMapper {
 ___
 
 
-#### Writing Tests for Persistence
+##### Writing Tests for Persistence
 > Oct 3, 2024
 
 # Writing Automated Tests that focus on persistence:
@@ -482,13 +482,13 @@ ___
 ##### Review Microservice Persistence
 
 > Abstract class: ``MySqlTestBase``
-
 > ``PersistenceTests`` extends ``MySqlTest``
-
 > ``ReviewServiceApplicationTests`` extends ``MySqlTestBase``
 
 ```
-class ReviewServiceApplicationTests extends MySqlTestBase { ...
+class ReviewServiceApplicationTests extends MySqlTestBase {
+	...
+}
 ```
 
 
@@ -506,5 +506,80 @@ Provide a ``Logback`` configuration file under ```src/test/resources``` with the
 ```
 
 The above config file defines default values and a log appender that can write log events to the console.
-The log output is limited to the **INFO** log level. This will discard the __DEBUG__ and __TRACE__ log records that will be emitted by Testcontainers library 
+
+The log output is limited to the **INFO** log level. This will discard the ___DEBUG___ and ___TRACE___ log records that will be emitted by Testcontainers library 
+
+
+**`ReviewServiceApplicationTests.java`**
+```java
+
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.reactive.server.WebTestClient;
+
+import static org.springframework.http.HttpStatus.*;
+import static reactor.core.publisher.Mono.just;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+
+import com.david.microservices.alpha.api.core.review.Review;
+import com.david.microservices.alpha.review.persistence.ReviewRepository;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static  org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+
+@SpringBootTest(webEnvironment = RANDOM_PORT)
+class ReviewServiceApplicationTests extends MySqlTestBase {
+	
+	/* writing off these to add persistence tests
+	private static int PRODUCT_ID_OK = 1;
+	private static int PRODUCT_ID_NOT_FOUND = 213;
+	private static int PRODUCT_ID_INVALID = -1;
+	*/
+	
+	@Autowired
+	private WebTestClient client;
+	
+	@Autowired
+	private ReviewRepository repo;
+	
+	@BeforeEach
+	void setupDb() {
+		repo.deleteAll();
+	}
+	
+	@Test
+	void getReviewsByProductId() {
+		int productId = 1;
+		
+		assertEquals(0, repo.findByProductId(productId).size());
+		
+		postAndVerifyReview(productId, 1, OK);
+	}
+	
+	private WebTestClient.BodyContentSpec postAndVerifyReview(int productId, int reviewId, HttpStatus expectedStatus) {
+		Review review = new Review(productId, reviewId, "Author " + reviewId, "Subject " + reviewId, "Content" + reviewId, "SA");
+		
+		return client.post()
+				.uri("/review")
+				.body(just(review), Review.class)
+				.accept(APPLICATION_JSON)
+				.exchange()
+				.expectStatus().isEqualTo(expectedStatus)
+				.expectHeader().contentType(APPLICATION_JSON)
+				.expectBody();
+	}
+}
+```
+
+Talking of the ``postAndVerifyReview()`` method, we create a new ```Review``` object and direct the test client (``WebClient``) to post and assert the response gotten. The status returned should be ``OK`` and the content type as application/json.
+
+
 
