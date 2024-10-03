@@ -466,3 +466,45 @@ public interface ReviewMapper {
 ```
 
 
+___
+
+
+#### Writing Tests for Persistence
+> Oct 3, 2024
+
+# Writing Automated Tests that focus on persistence:
+
+@DataMongoTest
+@DataJpaTest
+
+
+
+##### Review Microservice Persistence
+
+> Abstract class: ``MySqlTestBase``
+
+> ``PersistenceTests`` extends ``MySqlTest``
+
+> ``ReviewServiceApplicationTests`` extends ``MySqlTestBase``
+
+```
+class ReviewServiceApplicationTests extends MySqlTestBase { ...
+```
+
+
+Provide a ``Logback`` configuration file under ```src/test/resources``` with the content:
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+	<include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+	</root>
+</configuration>
+
+```
+
+The above config file defines default values and a log appender that can write log events to the console.
+The log output is limited to the **INFO** log level. This will discard the __DEBUG__ and __TRACE__ log records that will be emitted by Testcontainers library 
+
