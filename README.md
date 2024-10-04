@@ -475,11 +475,11 @@ ___
 # Writing Automated Tests that focus on persistence:
 
 @DataMongoTest
+
 @DataJpaTest
 
 
-
-##### Review Microservice Persistence
+#### Review Microservice Persistence
 
 > Abstract class: ``MySqlTestBase``
 > ``PersistenceTests`` extends ``MySqlTest``
@@ -555,15 +555,49 @@ class ReviewServiceApplicationTests extends MySqlTestBase {
 		repo.deleteAll();
 	}
 	
-	@Test
+	// ... upcoming tests discussion below
+}
+```
+
+Talking of the ``postAndVerifyReview()`` method, we create a new ```Review``` object and direct the test client (``WebClient``) to post and assert the response gotten. The status returned should be ``OK`` and the content type as application/json.
+
+
+> Oct 4, 2024
+
+##### `getReviewsByProductId()` test
+
+```java
+@Test
 	void getReviewsByProductId() {
 		int productId = 1;
 		
+		// Acertain that there are zero reviews for any product now that the reviews db has been cleared before test
 		assertEquals(0, repo.findByProductId(productId).size());
 		
+		// Post the reviews against product (1)
 		postAndVerifyReview(productId, 1, OK);
+		postAndVerifyReview(productId, 2, OK);
+		postAndVerifyReview(productId, 3, OK);
+		
+		// Assert that 3 reviews have been inserted successfully against a productId
+		assertEquals(3, repo.findByProductId(productId).size());
+		
+		getAndVerifyReviewsByProductId(productId, OK)
+			.jsonPath("$.length()").isEqualTo(3)
+			.jsonPath("$[2].productId").isEqualTo(3)
+			.jsonPath("$[2].reviewId").isEqualTo(3);
 	}
-	
+
+	private WebTestClient.BodyContentSpec getAndVerifyReviewsByProductId(int productId, HttpStatus expectedStatus) {
+		return client.get()
+				.uri("/review")
+				.accept(APPLICATION_JSON)
+				.exchange()
+				.expectStatus().isEqualTo(expectedStatus)
+				.expectHeader().contentType(APPLICATION_JSON)
+				.expectBody();
+	}
+
 	private WebTestClient.BodyContentSpec postAndVerifyReview(int productId, int reviewId, HttpStatus expectedStatus) {
 		Review review = new Review(productId, reviewId, "Author " + reviewId, "Subject " + reviewId, "Content" + reviewId, "SA");
 		
@@ -574,12 +608,35 @@ class ReviewServiceApplicationTests extends MySqlTestBase {
 				.exchange()
 				.expectStatus().isEqualTo(expectedStatus)
 				.expectHeader().contentType(APPLICATION_JSON)
-				.expectBody();
 	}
-}
 ```
 
-Talking of the ``postAndVerifyReview()`` method, we create a new ```Review``` object and direct the test client (``WebClient``) to post and assert the response gotten. The status returned should be ``OK`` and the content type as application/json.
+##### `duplicateError` test
+In this test, we assert that initially, the repository has zero reviews. Then we post a Review with ```productId=1``` and ```reviewId=1``` and confirm that the returned json object contains the respective productId and reviewId, and also the database contains exactly one review record.
 
+We then post another Review with same product id and review id. This should return a message containing ```Duplicate key```
 
+We ascertain that the database has maintained the earlier and only one record. There shouldn't be a duplicate record indeed!
+```java
+@Test
+	void duplicateError() {
+		int productId = 1;
+		int reviewId = 1;
+		
+		assertEquals(0, repo.count());
+		
+		postAndVerifyReview(productId, reviewId, OK)
+			.jsonPath("$.productId").isEqualTo(productId)
+			.jsonPath("$.reviewId").isEqualTo(reviewId);
+		
+		assertEquals(1, repo.count());
+		
+		postAndVerifyReview(productId, reviewId, UNPROCESSABLE_ENTITY)
+			.jsonPath("$.path").isEqualTo("/review")
+			.jsonPath("$.message").isEqualTo("Duplicate key, Product Id: 1, Review Id:1");
+		
+		assertEquals(1, repo.count());
+	}
+```
 
+##### `deleteReviews` test
