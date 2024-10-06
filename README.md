@@ -372,13 +372,13 @@ Create `ReviewEntity`
 ```java
 package com.david.microservices.alpha.review.persistence;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Version;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
+
 
 @Entity
 @Table(name = "reviews", indexes = { @Index(name = "reviews_unique_idx", unique = true, columnList = "productId,reviewId") })
@@ -386,10 +386,10 @@ public class ReviewEntity {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private int id;		// Ensure the import is strictly from jakarta.persistence
 	
 	@Version
-	private int version;
+	private int version;	// Ensure import is strictly from jakarta.persistence
 	
 	private int productId;
 	private int reviewId;
@@ -465,12 +465,220 @@ public interface ReviewMapper {
 }
 ```
 
+##### Update `Review` class in the ___api___ library to include setter methods:
 
+```java
+package com.david.microservices.alpha.api.core.review;
+
+public class Review {
+	
+	private int productId;
+	private int reviewId;
+	private String author;
+	private String subject;
+	private String content;
+	private String serviceAddress;
+	
+	public Review() {
+		this.productId = 0;
+		this.reviewId = 0;
+		this.author = null;
+		this.subject = null;
+		this.content = null;
+		this.serviceAddress = null;
+	}
+	
+	/**
+	 * All args constructor
+	 * 
+	 * @param productId
+	 * @param reviewId
+	 * @param author
+	 * @param subject
+	 * @param content
+	 * @param serviceAddress
+	 */
+	public Review(int productId, int reviewId,  String author, String subject, String content, String serviceAddress) {
+		this.productId = productId;
+		this.reviewId = reviewId;
+		this.author = author;
+		this.subject = subject;
+		this.content = content;
+		this.serviceAddress = serviceAddress;
+	}
+
+	public int getProductId() {
+		return productId;
+	}
+	
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	public void setReviewId(int reviewId) {
+		this.reviewId = reviewId;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public void setServiceAddress(String serviceAddress) {
+		this.serviceAddress = serviceAddress;
+	}
+
+	public int getReviewId() {
+		return reviewId;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public String getServiceAddress() {
+		return serviceAddress;
+	}	
+}
+
+```
+
+##### Update ___`ReviewService`___  in the ___api___ library to include mappings for `POST` and `DELETE` 
+```java
+package com.david.microservices.alpha.api.core.review;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+public interface ReviewService {
+	
+	/**
+	 * Example usage: "curl $HOST:$PORT/review?productId=1"
+	 * 
+	 * @param productId Id of the product
+	 * @return the reviews of the product
+	 */
+	@GetMapping(value= "/reviews", produces = "application/json")
+	List<Review> getReviews(@RequestParam(value = "productId", required = true) int productId);
+	
+	@PostMapping(value = "reviews", consumes = "application/json", produces = "application/json")
+	Review createReview(@RequestBody Review body);
+	
+	@DeleteMapping(value = "/reviews")
+	void deleteReviews(@RequestParam(value = "productId", required = true) int productId);
+}
+
+```
+
+##### Update ___`ReviewServiceImpl`___ in the `review` microservice to include implementations for `POST` and `DELETE`
+```java
+package com.david.microservices.alpha.review.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.david.microservices.alpha.api.core.review.Review;
+import com.david.microservices.alpha.api.core.review.ReviewService;
+import com.david.microservices.alpha.api.exceptions.InvalidInputException;
+import com.david.microservices.alpha.review.persistence.ReviewEntity;
+import com.david.microservices.alpha.review.persistence.ReviewRepository;
+import com.david.microservices.alpha.util.http.ServiceUtil;
+
+@RestController
+public class ReviewServiceImpl implements ReviewService {
+
+	private static final Logger LOG = LoggerFactory.getLogger(ReviewServiceImpl.class);
+	
+	private final ServiceUtil serviceUtil;
+	
+	private final ReviewMapper mapper;
+	private final ReviewRepository repo;
+	
+	/**
+	 * 
+	 * @param repo
+	 * @param mapper
+	 * @param serviceUtil
+	 */
+	@Autowired
+	public ReviewServiceImpl(ReviewRepository repo, ReviewMapper mapper, ServiceUtil serviceUtil) {
+		this.serviceUtil = serviceUtil;
+		this.mapper = mapper;
+		this.repo = repo;
+	}
+
+	@Override
+	public List<Review> getReviews(int productId) {
+		
+		if(productId < 1) {
+			throw new InvalidInputException("Invalid productId: " + productId);
+		}
+		
+		List<ReviewEntity> entityList = repo.findByProductId(productId);
+		List<Review> list = mapper.entityListToApiList(entityList);
+		
+		list.forEach(e -> e.setServiceAddress(serviceUtil.getServiceAddress()));
+		
+		LOG.debug("getReviews: response size: {}", list.size());
+		
+		return list;
+	}
+
+	@Override
+	public Review createReview(Review body) {
+		try {
+			ReviewEntity entity = mapper.apiToEntity(body);
+			ReviewEntity newEntity = repo.save(entity);
+			
+			LOG.debug("createReview: created a review entity: {}/{}", body.getProductId(), body.getReviewId());
+			return mapper.entityToApi(newEntity);
+		} catch (DataIntegrityViolationException dive) {
+			throw new InvalidInputException("Duplicate key, Product Id: " + body.getProductId() + ", Review Id: " + body.getReviewId());
+		}
+		
+	}
+
+	@Override
+	public void deleteReviews(int productId) {
+		LOG.debug("deleteReviews: tries to delete reviews for the product with productId: {}", productId);
+		repo.deleteAll(repo.findByProductId(productId));
+	}
+	
+}
+
+```
 ___
 
 
 ##### Writing Tests for Persistence
 > Oct 3, 2024
+> Tests. To come up with test cases, we have to think of how to break the functionality in every way! 
 
 # Writing Automated Tests that focus on persistence:
 
@@ -567,7 +775,7 @@ Talking of the ``postAndVerifyReview()`` method, we create a new ```Review``` ob
 ##### `getReviewsByProductId()` test
 
 ```java
-@Test
+	@Test
 	void getReviewsByProductId() {
 		int productId = 1;
 		
@@ -618,7 +826,7 @@ We then post another Review with same product id and review id. This should retu
 
 We ascertain that the database has maintained the earlier and only one record. There shouldn't be a duplicate record indeed!
 ```java
-@Test
+	@Test
 	void duplicateError() {
 		int productId = 1;
 		int reviewId = 1;
@@ -640,3 +848,144 @@ We ascertain that the database has maintained the earlier and only one record. T
 ```
 
 ##### `deleteReviews` test
+```java
+	@Test
+	void deleteReviews() {
+		int productId = 1;
+		int reviewId = 1;
+		
+		postAndVerifyReview(productId, reviewId, OK);
+		assertEquals(1, repo.findByProductId(productId).size());
+		
+		deleteAndVerifyReviewsByProductId(productId, OK);
+		assertEquals(0, repo.findByProductId(productId).size());
+		
+		deleteAndVerifyReviewsByProductId(productId, OK);
+	}
+
+	private WebTestClient.BodyContentSpec  deleteAndVerifyReviewsByProductId(int productId, HttpStatus expectedStatus) {
+		return client.delete()
+				.uri("/review?productId=" + productId)
+				.accept(APPLICATION_JSON)
+				.exchange()
+				.expectStatus().isEqualTo(expectedStatus)
+				.expectBody();
+	}
+```
+
+##### `getReviewsMissingParameter` test
+```java
+	@Test
+	void getReviewsMissingParameter() {
+		getAndVerifyReviewsByProductId("", BAD_REQUEST)		// overloaded the same 'getAndVerifyReviewsByProductId' method, with productId as String
+			.jsonPath("$.path").isEqualTo("/review")
+			.jsonPath("$.message").isEqualTo("Type mismatch.");
+			
+	}
+
+	private WebTestClient.BodyContentSpec getAndVerifyReviewsByProductId(String productIdQuery, HttpStatus expectedStatus) {
+		return client.get()
+				.uri("/review" + productIdQuery)
+				.accept(APPLICATION_JSON)
+				.exchange()
+				.expectStatus().isEqualTo(expectedStatus)
+				.expectHeader().contentType(APPLICATION_JSON)
+				.expectBody();
+	}
+```
+
+##### `getReviewsNotFound` test
+```java
+	@Test
+	void getReviewsNotFound() {
+		getAndVerifyReviewsByProductId("?productId=213", OK)
+			.jsonPath("$.length()").isEqualTo(0);
+	}
+```
+
+[Click here](./test_cases/persistence/ReviewServiceApplicationTests.java) to view entire class
+
+
+In the ``application.yml`` file, under _spring_ profile:
+```yaml
+spring:
+ application.name: review-service
+ # Set the following property to "none" in a prod environment
+ jpa:
+  hibernate:
+   ddl-auto: update
+  
+  properties: 
+   hibernate.dialect: org.hibernate.dialect.MySQLDialect
+ 
+ datasource:
+  url: jdbc:mysql://localhost/review-db
+  username: user
+  password: pwd
+
+```
+
+
+##### Update __```ReviewService```__ in the ___api__ library
+Update the _``ReviewService``_ interface to define the __Post__ and __Delete__ mappings:
+
+```java
+package com.david.microservices.alpha.api.core.review;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+public interface ReviewService {
+	
+	@GetMapping(value= "/reviews", produces = "application/json")
+	List<Review> getReviews(@RequestParam(value = "productId", required = true) int productId);
+	
+	@PostMapping(value = "reviews", consumes = "application/json", produces = "application/json")
+	Review createReview(@RequestBody Review body);
+	
+	@DeleteMapping(value = "/reviews")
+	void deleteReviews(@RequestParam(value = "productId", required = true) int productId);
+}
+
+```
+
+Build the entire landscape to make sure the dependencies are updated:
+cd /home/dave/Documents/Workspace-Microservices-alpha
+./gradlew build 
+
+
+##### `ReviewServiceApplication.java`
+Update the main application class:
+```java
+package com.david.microservices.alpha.review;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+
+@SpringBootApplication
+@ComponentScan("com.david.microservices.alpha")
+public class ReviewServiceApplication {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(ReviewServiceApplication.class);
+	
+	public static void main(String[] args) {
+		//SpringApplication.run(ReviewServiceApplication.class, args);
+		ConfigurableApplicationContext ctx = SpringApplication.run(ReviewServiceApplication.class, args);
+		
+		String mysqlUri = ctx.getEnvironment().getProperty("spring.datasource.url");
+		LOG.info("Connected to MySQL: " + mysqlUri);
+	}
+}
+```
+
+
+
