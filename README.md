@@ -673,6 +673,46 @@ public class ReviewServiceImpl implements ReviewService {
 }
 
 ```
+
+
+##### Confirm ___`build.gradle`___ file contains the following settings for `Mapstruct`:
+```sh
+ext {
+	mapstructVersion = "1.5.3.Final"
+}
+
+dependencies {
+	implementation(project(':api'))
+	implementation(project(':util'))
+	
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	
+	// Add persistence for MySQL
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'com.mysql:mysql-connector-j'
+	
+	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+	
+	compileOnly "org.mapstruct:mapstruct-processor:${mapstructVersion}"	
+	// Don't miss this, otherwise you get the errors: Parameter 1 of constructor in com.david.microservices.alpha.review.services.ReviewServiceImpl 
+	// required a bean of type 'com.david.microservices.alpha.review.services.ReviewMapper' that could not be found.
+
+	
+	// Use Testcontainers and its support for JUnit5 to enable use of MongoDB when running automated integration tests
+	implementation platform('org.testcontainers:testcontainers-bom:1.15.2')
+	testImplementation 'org.testcontainers:testcontainers'
+	testImplementation 'org.testcontainers:junit-jupiter'
+	testImplementation 'org.testcontainers:mysql'
+}
+
+```
+
+
 ___
 
 
