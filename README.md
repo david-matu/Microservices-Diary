@@ -115,6 +115,7 @@ ENTRYPOINT [ "java", "org.springframework.boot.loader.launch.JarLauncher" ]
 
 ![View UML](./architecture/Microservices-Dave-Alpha.drawio.svg)
 
+
 ## Adding Persistence to the microservices
 > Aug_27_2024  
 Featuring **MongoDB** and **MySQL** databases
@@ -160,6 +161,7 @@ services:
 ```
 
 The `product` and `recommendation` microservices, will use **MongoDB** while the `review` microservice will use **MySQL**
+
 
 ### 1. Add dependencies
 ##### Product and Review microservices
@@ -698,7 +700,9 @@ dependencies {
 	
 	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
 	
-	compileOnly "org.mapstruct:mapstruct-processor:${mapstructVersion}"	
+	compileOnly "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+	annotationProcessor('org.mapstruct:mapstruct-processor:${mapstructVersion}')
+   testAnnotationProcessor('org.mapstruct:mapstruct-processor:${mapstructVersion}')
 	// Don't miss this, otherwise you get the errors: Parameter 1 of constructor in com.david.microservices.alpha.review.services.ReviewServiceImpl 
 	// required a bean of type 'com.david.microservices.alpha.review.services.ReviewMapper' that could not be found.
 
@@ -713,6 +717,13 @@ dependencies {
 ```
 
 
+#### Product Composite
+Click [here](./codepends/codeflow_service_product_composite.md) to see the implementation flow
+
+
+#### Product Microservice
+Click [here](./codepends/codeflow_service_product.md) to see the implementation flow
+
 ___
 
 
@@ -725,7 +736,6 @@ ___
 @DataMongoTest
 
 @DataJpaTest
-
 
 #### Review Microservice Persistence
 

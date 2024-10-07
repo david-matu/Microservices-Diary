@@ -1,4 +1,6 @@
 ### Code Flow: `product-composite microservice`
+> Oct 7, 2024
+
 
 #### Update the `ProductCompositeService` in the ___api___ library project to define the create and delete operations
 
@@ -51,3 +53,8 @@ public interface ProductCompositeService {
 }
 
 ```
+
+The `create` and `delete` mappings have to be implemented in the concrete class ___`ProductCompositeServiceImpl`___ in the ```product-composite-service```
+
+
+But first, let's first override methods for the other services (`Product`, `Recommendation` and `Review`) in the ___`ProductCompositeIntegration`___
