@@ -1037,5 +1037,30 @@ public class ReviewServiceApplication {
 }
 ```
 
+___
+
+
+#### Running the Landscape:
+> Oct 12, 2024
+
+```sh
+./gradlew build && docker compose build && docker compose up -d
+
+# To follow the logs for each of the microservices or nodes (mysql, mongodb):
+docker compose logs product -f
+docker compose logs recommendation -f
+docker compose logs review -f
+docker compose logs mongodb -f
+docker compose logs mysql -f
+```
+
+
+To inspect the database instances, i.e., to view records:
+```sh
+docker compose exec mongodb mongosh product_db --quiet --eval "db.products.find()"
+docker compose exec mongodb mongosh recommendation_db --quiet --eval "db.recommendation.find()"
+docker compose exec mysql mysql -uuser -p review_db
+```
+
 
 
